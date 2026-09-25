@@ -451,7 +451,7 @@ CAP("Figure 2. Behaviour of the minimal loop model. (A) Accumulated metabolite "
     "result, not a prediction for any patient." % R["max_delay_hours"])
 Pp("That the modelled benefit is bounded is not a weakness of the proposal but "
    "the most useful thing the model says. An intervention that postpones the "
-   "neurotoxic threshold by hours is worth having if those hours are lucid and "
+   "point of accumulation-driven agitation by hours is worth having if those hours are lucid and "
    "the patient's family is present. An intervention sold as a way to avoid "
    "opioid escalation would be both wrong and dangerous.", indent=True)
 
