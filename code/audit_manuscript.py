@@ -22,6 +22,9 @@ CHECKS = [
  ("ceiling hours",         "%.1f" % R["max_delay_hours"]),
  ("no-loop crossing day",  "%.2f" % R["no_affective_loop"]["cross_day"]),
  ("dose change pct",       "%.0f" % (-100 * R["intervention"]["mean_dose_change"])),
+ ("sensitivity min delay", "%.1f" % min(x["delay_hours"] for x in R["sensitivity"])),
+ ("sensitivity max ceiling", "%.1f" % max(x["ceiling_hours"] for x in R["sensitivity"])),
+ ("parameter tau_CL",      "%g" % R["parameters"]["tau_CL"]),
 ]
 print("NUMERIC CHECKS")
 missing = 0
@@ -58,7 +61,7 @@ issues = []
 for pat, why in FORBIDDEN:
     for m in re.finditer(pat, TEXT, re.I):
         seg = TEXT[max(0, m.start() - 70):m.end() + 70].replace("\n", " ")
-        denial = re.search(r"(never|not|no \w+ strength|cannot) prevent", seg, re.I)
+        denial = re.search(r"(never|not|no \w+ strength|cannot) prevent|no run did|no perturbation allows", seg, re.I)
         if denial or "never a target" in seg:
             continue
         issues.append("%s -> ...%s..." % (why, seg))
@@ -67,7 +70,15 @@ io.open(os.path.join(HERE, "_audit_issues.txt"), "w", encoding="utf-8").write(
     "\n\n".join(issues) if issues else "none")
 
 required = ["Ethical statement", "How this proposal could cause harm",
-            "adjunctive", "never a target", "treatment recommendation"]
+            "adjunctive", "never a target", "treatment recommendation",
+            "modulating opioid escalation", "illustrative model threshold",
+            "Declaration of generative AI and AI-assisted technologies in the manuscript preparation process",
+            "Feasibility of P3", "partially overlapping but non-equivalent"]
+for bad in ["limiting opioid escalation", "overlaps almost completely",
+            "days before death", "direct supporting evidence", "neurotoxicity threshold",
+            "2016;2019", "2014;2019"]:
+    if bad.lower() in TEXT.lower():
+        issues.append("phrase the revision removed is back: %r" % bad)
 print("\nREQUIRED CONTENT")
 for r_ in required:
     print("   %-42s %s" % (r_, "present" if r_.lower() in TEXT.lower() else "MISSING"))

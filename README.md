@@ -4,7 +4,7 @@ Leon Sandler, Independent Researcher — sandler.leon@gmail.com
 ORCID [0009-0007-4584-808X](https://orcid.org/0009-0007-4584-808X)
 
 Model and manuscript for *"The auditory–cardiac channel in the last days of life:
-a neurovisceral hypothesis for limiting opioid escalation,"* submitted to
+a neurovisceral hypothesis for modulating opioid escalation,"* submitted to
 **Medical Hypotheses**.
 
 > **This is a hypothesis paper.** No patient was studied and no data were
@@ -15,31 +15,34 @@ a neurovisceral hypothesis for limiting opioid escalation,"* submitted to
 
 ## The problem
 
-In the last days of life, opioid infusion is titrated against observed distress.
-But the signs being titrated against — restlessness, grimacing, tachycardia —
-are also the signs of opioid-induced neurotoxicity as metabolites accumulate in
-a patient whose clearance is failing. The bedside cannot distinguish too little
-drug from too much, and the humane default is to give more. The cost is that
-patients become unreachable days before they die.
+In the last days of life, opioid infusion is commonly titrated against
+observed signs of distress, but those signs may reflect nociception, autonomic
+arousal, delirium or opioid-related neurotoxicity. Where clearance of active
+metabolites declines, bedside signs alone may not distinguish too little drug
+from too much, and a common, humane response is to give more.
 
 ## The hypothesis
 
 Part of that escalation is driven by a self-reinforcing loop between autonomic
-arousal and perceived pain rather than by nociception alone — and the loop is
-reachable through the subcortical auditory pathway, which stays functional when
-other sensory channels have failed.
+arousal and perceived distress rather than by nociception alone — and the loop
+may be reachable through hearing, since auditory processing appears to persist
+when other channels have failed. Anatomical connection is not evidence of a
+therapeutic effect: whether auditory input changes autonomic state in dying
+patients, and whether that changes opioid requirement, are both untested.
 
 ## The model
 
 ```
-P = N(1 + gA)                          perceived pain
-dA/dt = (a₀ + k_P·P − V − A)/τ_A       autonomic arousal, damped by V
-dM/dt = k_M·D − CL(t)·M                metabolite accumulation
-CL(t) = CL₀·exp(−t/τ_CL)               clearance falls as death approaches
+P = N(1 + gA),  N = N₀ + k_agit·H(M − M*)   perceived pain; agitation after M* is crossed
+dA/dt = (a₀ + k_P·P − V − A)/τ_A, A ≥ 0      autonomic arousal, damped by V
+dD/dt = (min(P, D_max) − D)/τ_D              dose titrated toward perceived pain
+dM/dt = k_M·D − CL(t)·M                      metabolite accumulation
+CL(t) = CL₀·exp(−t/τ_CL)                     declining clearance
 ```
 
-Once `M` crosses a threshold an agitation term is added to `N`, which closes the
-loop. **Every parameter is illustrative.** This is not a pharmacokinetic
+Initial conditions A(0) = a₀, D(0) = 0, M(0) = 0; forward Euler, dt = 0.002 day,
+10 days. `M*` is an **illustrative model threshold**, not a neurotoxic
+concentration. The manuscript's Table 1 lists every parameter value and unit. **Every parameter is illustrative.** This is not a pharmacokinetic
 simulation of morphine and no output is a predicted dose or survival time.
 
 ## What the model says
@@ -50,6 +53,7 @@ simulation of morphine and no output is a predicted dose or survival time.
 | Modest damping | day 1.30 — **+6.2 hours**, mean pre-threshold dose −11% |
 | Maximal damping | **ceiling +34.8 hours** |
 | Prevention at any damping strength | **none** |
+| Sensitivity (each of 11 parameters ×0.75 / ×1.25) | delay 3.5–10.7 h, ceiling 21.0–50.7 h, prevention in no run |
 
 The benefit is bounded and the bound is hours to a little over a day. That is
 the most useful thing the model says: an intervention that buys lucid hours is
@@ -83,6 +87,7 @@ code/
   build_cover_letter.py  cover letter
   audit_manuscript.py    numeric, reference and safety-language checks
   harvest_refs.py        Crossref verification of every reference
+  add_refs_v2.py         revision-2 reference additions, each checked against Crossref
 figures/                 two figures, 300 dpi
 manuscript/              manuscript and cover letter
 ```
@@ -97,12 +102,13 @@ python code/build_manuscript.py   # manuscript
 python code/audit_manuscript.py   # checks the document against the model
 ```
 
-The audit re-checks five headline numbers, verifies every reference is cited and
+The audit re-checks the headline and sensitivity numbers, verifies every reference is cited and
 every citation listed, and scans for language that would overclaim — text
 suggesting the intervention replaces opioid, eliminates the need for it, or
 prevents the neurotoxic threshold.
 
-All 17 references were verified against Crossref.
+All 21 references were verified against their sources (20 against Crossref; the
+NICE NG31 guideline has no DOI and is cited by its URL).
 
 ## Citation
 

@@ -42,8 +42,8 @@
  },
  "thayer2009": {
   "doi": "10.1016/j.neubiorev.2008.08.004",
-  "title": "Claude Bernard and the heart\u2013brain connection: Further elaboration of a model of neurovisceral integration",
-  "journal": "Neuroscience &amp; Biobehavioral Reviews",
+  "title": "Claude Bernard and the heart–brain connection: Further elaboration of a model of neurovisceral integration",
+  "journal": "Neuroscience & Biobehavioral Reviews",
   "year": 2009,
   "volume": "33",
   "page": "81-88",
@@ -63,7 +63,7 @@
    "Critchley HD",
    "Wiens S",
    "Rotshtein P",
-   "\u00d6hman A",
+   "Öhman A",
    "Dolan RJ"
   ]
  },
@@ -142,7 +142,7 @@
  },
  "smith2000": {
   "doi": "10.1046/j.1440-1681.2000.03290.x",
-  "title": "Neuroexcitatory Effects Of Morphine And Hydromorphone: Evidence Implicating The 3\u2010Glucuronide Metabolites",
+  "title": "Neuroexcitatory Effects Of Morphine And Hydromorphone: Evidence Implicating The 3‐Glucuronide Metabolites",
   "journal": "Clinical and Experimental Pharmacology and Physiology",
   "year": 2000,
   "volume": "27",
@@ -153,8 +153,8 @@
  },
  "m3g_refute": {
   "doi": "10.1034/j.1600-0773.2003.930408.x",
-  "title": "The Neuroexcitatory Morphine Metabolite, Morphine\u20103\u2010glucuronide (M3G), is not Neurotoxic in Primary Cultures of either Hippocampal or Cerebellar Granule Neurones",
-  "journal": "Pharmacology &amp; Toxicology",
+  "title": "The Neuroexcitatory Morphine Metabolite, Morphine‐3‐glucuronide (M3G), is not Neurotoxic in Primary Cultures of either Hippocampal or Cerebellar Granule Neurones",
+  "journal": "Pharmacology & Toxicology",
   "year": 2003,
   "volume": "93",
   "page": "197-200",
@@ -168,7 +168,7 @@
  "oin2026": {
   "doi": "10.1136/spcare-2025-006002",
   "title": "Opioid-induced neurotoxicity in palliative medicine: a rapid review",
-  "journal": "BMJ Supportive &amp; Palliative Care",
+  "journal": "BMJ Supportive & Palliative Care",
   "year": 2026,
   "volume": null,
   "page": "spcare-2025-006002",
@@ -183,26 +183,28 @@
   "title": "Music therapy for end-of-life care",
   "journal": "Cochrane Database of Systematic Reviews",
   "year": 2014,
-  "volume": "2019",
+  "volume": null,
   "page": null,
   "authors": [
    "Bradt J",
    "Dileo C"
-  ]
+  ],
+  "cochrane": "(3):CD007169"
  },
  "barnes2016": {
   "doi": "10.1002/14651858.cd011008.pub2",
   "title": "Opioids for the palliation of refractory breathlessness in adults with advanced disease and terminal illness",
   "journal": "Cochrane Database of Systematic Reviews",
   "year": 2016,
-  "volume": "2019",
+  "volume": null,
   "page": null,
   "authors": [
    "Barnes H",
    "McDonald J",
    "Smallwood N",
    "Manser R"
-  ]
+  ],
+  "cochrane": "(3):CD011008"
  },
  "woolf2011": {
   "doi": "10.1016/j.pain.2010.09.030",
@@ -229,5 +231,74 @@
    "Latchem S",
    "Ahmedzai SH"
   ]
+ },
+ "ledoux2000": {
+  "authors": [
+   "LeDoux JE"
+  ],
+  "title": "Emotion Circuits in the Brain",
+  "journal": "Annual Review of Neuroscience",
+  "year": 2000,
+  "volume": "23",
+  "page": "155-184",
+  "doi": "10.1146/annurev.neuro.23.1.155"
+ },
+ "koelsch2014": {
+  "authors": [
+   "Koelsch S"
+  ],
+  "title": "Brain correlates of music-evoked emotions",
+  "journal": "Nature Reviews Neuroscience",
+  "year": 2014,
+  "volume": "15",
+  "page": "170-180",
+  "doi": "10.1038/nrn3666"
+ },
+ "benarroch1993": {
+  "authors": [
+   "Benarroch EE"
+  ],
+  "title": "The Central Autonomic Network: Functional Organization, Dysfunction, and Perspective",
+  "journal": "Mayo Clinic Proceedings",
+  "year": 1993,
+  "volume": "68",
+  "page": "988-1001",
+  "doi": "10.1016/s0025-6196(12)62272-1"
+ },
+ "taskforce1996": {
+  "authors": [
+   "Task Force of the European Society of Cardiology and the North American Society of Pacing and Electrophysiology"
+  ],
+  "title": "Heart rate variability: standards of measurement, physiological interpretation and clinical use",
+  "journal": "Circulation",
+  "year": 1996,
+  "volume": "93",
+  "page": "1043-1065",
+  "doi": "10.1161/01.cir.93.5.1043"
+ },
+ "laborde2017": {
+  "authors": [
+   "Laborde S",
+   "Mosley E",
+   "Thayer JF"
+  ],
+  "title": "Heart Rate Variability and Cardiac Vagal Tone in Psychophysiological Research – Recommendations for Experiment Planning, Data Analysis, and Data Reporting",
+  "journal": "Frontiers in Psychology",
+  "year": 2017,
+  "volume": "8",
+  "page": "213",
+  "doi": "10.3389/fpsyg.2017.00213"
+ },
+ "nice_ng31": {
+  "authors": [
+   "National Institute for Health and Care Excellence"
+  ],
+  "title": "Care of dying adults in the last days of life. NICE guideline NG31",
+  "journal": "London: NICE",
+  "year": 2015,
+  "volume": null,
+  "page": null,
+  "doi": null,
+  "url": "https://www.nice.org.uk/guidance/ng31"
  }
 }

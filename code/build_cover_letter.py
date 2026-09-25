@@ -47,32 +47,34 @@ P("Medical Hypotheses", size=10.5, after=14)
 P("Dear Editors,", after=10)
 
 P("I am submitting \u201cThe auditory\u2013cardiac channel in the last days of "
-  "life: a neurovisceral hypothesis for limiting opioid escalation\u201d for "
+  "life: a neurovisceral hypothesis for modulating opioid escalation\u201d for "
   "consideration as a hypothesis paper.")
 
 P("The clinical observation behind it is ordinary and, I think, under-theorised. "
-  "In the last days of life, opioid infusion is titrated against observed "
-  "distress, but the signs being titrated against \u2014 restlessness, "
-  "grimacing, tachycardia \u2014 are the same signs produced by opioid-induced "
-  "neurotoxicity as metabolites accumulate in a patient whose clearance is "
-  "failing. The bedside cannot distinguish too little drug from too much, and "
-  "the humane default is to give more. The cost is that patients become "
-  "unreachable days before they die.")
+  "In the last days of life, opioid infusion is commonly titrated against "
+  "observed signs of distress, but those signs may reflect nociception, "
+  "autonomic arousal, delirium or opioid-related neurotoxicity, and bedside "
+  "signs alone may not distinguish too little drug from too much. The paper "
+  "asks whether part of the resulting escalation has an arousal component that "
+  "could be reached without drugs.")
 
 P("The hypothesis", bold=True, after=4)
 P("I propose that a component of that escalation is driven by a self-reinforcing "
-  "loop between autonomic arousal and perceived pain rather than by nociception "
-  "alone, and that the loop is reachable through the subcortical auditory "
-  "pathway, which remains functional when other sensory channels have failed. "
-  "The paper sets out the anatomy, states the evidentiary standing of every link "
-  "in a table, and analyses a minimal model of the loop.")
+  "loop between autonomic arousal and perceived distress rather than by "
+  "nociception alone, and that the loop may be reachable through hearing, since "
+  "auditory processing appears to persist when other channels have failed. The "
+  "paper separates what is established from what is hypothesised and what is "
+  "untested, states the evidentiary standing of every link in a table, and "
+  "analyses a minimal, fully specified model of the loop.")
 
 P("Why I think it is worth publishing", bold=True, after=4)
 for txt in [
     "It makes the mechanism quantitative rather than gestural. The model says "
     "the intervention would postpone the neurotoxic threshold by roughly %.0f "
     "hours at modest strength, with a hard ceiling near %.0f hours, and would "
-    "never prevent the crossing at any strength. A bounded, unflattering "
+    "never prevent the crossing at any strength; a one-at-a-time sensitivity "
+    "analysis over all eleven parameters leaves that conclusion intact. A "
+    "bounded, unflattering "
     "prediction is more useful than an open-ended claim, and it is what makes "
     "the hypothesis refutable."
     % (INT["delay_hours"], R["max_delay_hours"]),
@@ -93,7 +95,9 @@ for txt in [
     "The decisive early test is cheap and non-invasive. Whether structured "
     "verbal input measurably raises high-frequency heart rate variability in "
     "unresponsive dying patients requires no protocol deviation and would be "
-    "informative whichever way it resolved.",
+    "informative whichever way it resolved. The paper sets out the measurement "
+    "limits in this population (arrhythmia, respiration, medication, signal "
+    "quality) and a within-patient design that allows for them.",
 ]:
     p = doc.add_paragraph(style="List Bullet")
     p.paragraph_format.space_after = Pt(6)
@@ -106,7 +110,9 @@ P("The model implementation, parameter set and figure generators are openly "
   "archived at https://doi.org/10.5281/zenodo.22860430; the manuscript is "
   "deposited at https://doi.org/10.5281/zenodo.22860432. Every number in the "
   "paper is read programmatically from the model output rather than "
-  "transcribed, and all 17 references were verified against Crossref.")
+  "transcribed, and every reference was verified against its source. The two "
+  "figures are supplied as separate 300-dpi files as well as embedded in the "
+  "manuscript.")
 
 P("Declarations", bold=True, after=4)
 P("This manuscript is original, is not under consideration elsewhere, and has "
@@ -116,7 +122,8 @@ P("This manuscript is original, is not under consideration elsewhere, and has "
   "studied and no data were collected. Generative AI (Claude, Anthropic) was "
   "used to assist with literature synthesis, model implementation and drafting; "
   "I reviewed and edited all content, verified every reference, and take full "
-  "responsibility for the manuscript, as stated in the Declarations.")
+  "responsibility for the manuscript, as stated in its declaration of "
+  "generative AI and AI-assisted technologies.")
 
 P("Thank you for considering it.", after=14)
 P("Yours sincerely,", after=0)

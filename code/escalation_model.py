@@ -146,8 +146,55 @@ def main():
     print("\ndelay positive across every assumed gain: %s"
           % res["delay_positive_for_all_gains"])
 
+    # ---- one-at-a-time sensitivity: every parameter scaled by 0.75 and 1.25
+    res["sensitivity"] = sensitivity()
+
+    # ---- what a reader needs to reproduce the numbers
+    res["reproduction"] = {
+        "integration": "forward Euler, dt = %.3f day, t = 0 to %.0f days" % (DT, T_END),
+        "initial_conditions": {"A": "a0", "D": 0.0, "M": 0.0},
+        "threshold": "first time M exceeds Mstar; after that N = N0 + kAgit",
+        "dose_rule": "dD/dt = (min(P, Dmax) - D)/tau_D",
+        "modest_damping_V": 0.35, "maximal_damping_V_in_figure": 1.5,
+        "sweep_V": [0.0, 3.0, 301]}
+
     json.dump(res, open("escalation_results.json", "w"), indent=1)
     print("\nwrote escalation_results.json")
+
+
+SENS_PARAMS = ["g", "a0", "kP", "tau_A", "tau_D", "kM", "CL0", "tau_CL", "Mstar",
+               "kAgit", "Dmax"]
+
+
+def sensitivity(factors=(0.75, 1.25), V_mod=0.35, Vs=np.linspace(0.0, 3.0, 61)):
+    """Scale each parameter in turn and re-derive the three reported quantities."""
+    HRS = 24.0
+    out = []
+    print("\n%-7s %6s %10s %10s %10s %10s" % ("param", "x", "base (d)", "delay(h)",
+                                             "ceiling(h)", "prevented"))
+    for name in SENS_PARAMS:
+        for f in factors:
+            p = {name: P0[name] * f}
+            b = run(V=0.0, p=p)
+            if b["cross"] is None:
+                row = {"param": name, "factor": f, "baseline_cross_day": None,
+                       "delay_hours": None, "ceiling_hours": None, "prevented": True,
+                       "note": "threshold not reached within %.0f days" % T_END}
+            else:
+                iv = run(V=V_mod, p=p)
+                cs = [run(V=float(v), p=p)["cross"] for v in Vs]
+                fin = [c for c in cs if c is not None]
+                row = {"param": name, "factor": f,
+                       "baseline_cross_day": round(b["cross"], 3),
+                       "delay_hours": (round((iv["cross"] - b["cross"]) * HRS, 1)
+                                       if iv["cross"] is not None else None),
+                       "ceiling_hours": round((max(fin) - b["cross"]) * HRS, 1) if fin else None,
+                       "prevented": any(c is None for c in cs)}
+            out.append(row)
+            print("%-7s %6.2f %10s %10s %10s %10s"
+                  % (name, f, row["baseline_cross_day"], row["delay_hours"],
+                     row["ceiling_hours"], row["prevented"]))
+    return out
 
 
 if __name__ == "__main__":

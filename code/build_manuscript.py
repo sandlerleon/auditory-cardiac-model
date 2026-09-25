@@ -153,8 +153,9 @@ def TBL(headers, rows, fs=9):
 # ==================================================================== FRONT
 p = doc.add_paragraph()
 p.paragraph_format.line_spacing = 1.5
-r = p.add_run("The auditory\u2013cardiac channel in the last days of life: a "
-              "neurovisceral hypothesis for limiting opioid escalation")
+TITLE = ("The auditory\u2013cardiac channel in the last days of life: a "
+         "neurovisceral hypothesis for modulating opioid escalation")
+r = p.add_run(TITLE)
 r.bold = True
 r.font.size = Pt(14)
 
@@ -165,51 +166,62 @@ Pp("ORCID: 0009-0007-4584-808X \u00b7 Correspondence: sandler.leon@gmail.com",
 
 H("Abstract")
 ABSTRACT = (
-    "In the last days of life, continuous opioid infusion is titrated against "
-    "observed distress. Because renal and hepatic clearance fall as death "
-    "approaches, escalation and accumulation interact: metabolite accumulation "
-    "can produce agitation, agitation is read as pain, and pain prompts further "
-    "escalation. The endpoint is often a depth of sedation that ends "
-    "communication between the patient and those present, days before death. We "
-    "propose that part of this escalation is driven not by nociception but by a "
-    "self-reinforcing loop between autonomic arousal and perceived pain, and "
-    "that the loop is accessible through a sensory channel that remains "
-    "functional when others have failed. Auditory event-related potentials "
-    "persist in actively dying patients, and the subcortical auditory pathway "
-    "reaches the central autonomic network without requiring cortical "
-    "participation. We set out the anatomy, state explicitly which links are "
-    "demonstrated and which are assumed, and analyse a minimal model of the "
-    "escalation loop. The model indicates that damping autonomic arousal "
-    "postpones rather than prevents metabolite accumulation, with a bounded "
-    "benefit. We give five falsifiable predictions, the conditions under which "
-    "the proposal would cause harm, and the reasons a negative trial would be "
-    "informative. No patient data were collected and nothing here is a "
-    "treatment recommendation.")
+    "In the last days of life, opioid infusion is commonly titrated against "
+    "observed signs of distress, but these signs may reflect nociception, "
+    "autonomic arousal, delirium, or opioid-related neurotoxicity. Where "
+    "clearance of active metabolites declines, escalation and accumulation can "
+    "interact: accumulation may produce agitation, agitation may be read as "
+    "pain, and perceived pain may prompt further escalation. We propose that "
+    "part of this escalation is driven not by nociception but by a "
+    "self-reinforcing loop between autonomic arousal and perceived distress, "
+    "and that the loop may be accessible through hearing. We separate what is "
+    "established (auditory information reaches brainstem structures without "
+    "requiring cortical processing; autonomic regulation involves brainstem, "
+    "limbic and cortical structures; tone-evoked auditory potentials persist "
+    "in actively dying patients) from what is hypothesised (that residual "
+    "auditory processing can be used to lower autonomic arousal in dying "
+    "patients) and from what is untested (whether this changes opioid "
+    "requirement). A minimal, fully specified model of the loop, with "
+    "illustrative parameters and a sensitivity analysis, indicates that "
+    "damping arousal postpones rather than prevents metabolite accumulation, "
+    "with a benefit bounded at about a day in the base case. We give five "
+    "falsifiable predictions, a "
+    "feasibility protocol for heart rate variability measurement in dying "
+    "patients, and the conditions under which the proposal would cause harm. "
+    "No patient data were collected, and nothing here is a treatment "
+    "recommendation or a reason to withhold or delay analgesia.")
 Pp(ABSTRACT, spacing=1.5)
 
-Pp("Keywords: palliative care; end-of-life care; opioid escalation; auditory "
-   "event-related potentials; neurovisceral integration; heart rate "
-   "variability; clinical hypnosis; terminal agitation",
+Pp("Keywords: palliative care; opioid escalation; terminal agitation; auditory "
+   "event-related potentials; neurovisceral integration; heart rate variability",
    spacing=1.5, size=10.5)
 
 # ================================================================= SECTION 1
 H("1. The problem")
 Pp("Care of the dying is, pharmacologically, a titration problem. Continuous "
    "subcutaneous or intravenous opioid is adjusted against observed signs of "
-   "distress: grimacing, restlessness, tachypnoea, tachycardia. National "
-   "guidance is explicit that dose should follow assessed need %s, and opioids "
-   "are the best-evidenced treatment for refractory breathlessness at the end "
-   "of life %s. None of this is in question here."
-   % (C("nice2016"), C("barnes2016")))
+   "distress: grimacing, restlessness, tachypnoea, tachycardia. The NICE "
+   "guideline on care of dying adults recommends that medicines for symptoms "
+   "including pain be prescribed and adjusted according to individual assessed "
+   "need %s (summarised in %s), and opioids are the best-evidenced treatment "
+   "for refractory breathlessness in advanced disease %s. None of this is in "
+   "question here."
+   % (C("nice_ng31"), C("nice2016"), C("barnes2016")))
+Pp("Throughout this paper, pain, distress and agitation are treated as partially "
+   "overlapping but non-equivalent clinical constructs. The hypothesis concerns "
+   "the contribution of autonomic arousal to observed distress and to opioid "
+   "titration; it does not claim that terminal agitation is itself pain.",
+   indent=True)
 Pp("The difficulty is that the signs being titrated against are not specific to "
-   "nociception, and the patient can no longer disambiguate them. As organ "
-   "function declines, opioid metabolites accumulate. Opioid-induced "
-   "neurotoxicity \u2014 myoclonus, hyperalgesia, delirium, terminal agitation "
-   "\u2014 is a recognised complication in palliative medicine %s, and its "
-   "presentation overlaps almost completely with the presentation of "
-   "under-treated pain. A clinician watching a restless, grimacing patient "
-   "cannot tell from the bedside whether the dose is too low or too high, and "
-   "the default, humane response is to increase it."
+   "nociception, and the patient can no longer disambiguate them. Where renal "
+   "function declines, as it may in the last days of life, active opioid "
+   "metabolites can accumulate. Opioid-induced neurotoxicity \u2014 myoclonus, "
+   "hyperalgesia, delirium, agitation \u2014 is a recognised complication in "
+   "palliative medicine %s, and some of its features, such as restlessness and "
+   "apparent distress, can resemble under-treated pain. A clinician watching a "
+   "restless, grimacing patient may not be able to tell from bedside signs "
+   "alone whether the dose is too low or too high, and a common, humane "
+   "response is to increase it."
    % C("oin2026"), indent=True)
 Pp("We note at once that the mechanism usually invoked for this neurotoxicity is "
    "contested. Morphine-3-glucuronide was proposed as the neuroexcitatory agent "
@@ -219,10 +231,12 @@ Pp("We note at once that the mechanism usually invoked for this neurotoxicity is
    "therefore treat metabolite accumulation as a phenomenological driver rather "
    "than asserting a specific mediator."
    % (C("smith2000"), C("m3g_refute")), indent=True)
-Pp("The cost of the resulting escalation is not primarily physiological. It is "
-   "that the patient becomes unreachable. Families describe losing the person "
-   "some days before the death, and clinicians are left balancing comfort "
-   "against presence with no instrument that measures the trade-off.", indent=True)
+Pp("When escalation does occur, one potential cost is reduced capacity for "
+   "communication, since both sedation and delirium limit interaction with "
+   "those at the bedside. How often this happens, and how early, is not "
+   "established here and is not assumed; the hypothesis concerns a mechanism "
+   "that could contribute to it, and preserved responsiveness is the outcome "
+   "the proposal ultimately seeks to measure (prediction P5).", indent=True)
 
 # ================================================================= SECTION 2
 H("2. The hypothesis")
@@ -232,26 +246,45 @@ p.paragraph_format.right_indent = Inches(0.4)
 p.paragraph_format.line_spacing = 1.5
 r = p.add_run("A component of terminal opioid escalation is driven by a "
               "self-reinforcing loop between autonomic arousal and perceived "
-              "pain, rather than by nociceptive input alone. Because the "
-              "subcortical auditory pathway remains functional when other "
-              "sensory channels have failed, structured auditory input can "
-              "reach the central autonomic network directly and damp that "
-              "loop, postponing the point at which accumulation forces a choice "
-              "between comfort and consciousness.")
+              "distress, rather than by nociceptive input alone. Because "
+              "auditory processing appears to persist in dying patients when "
+              "other channels have failed, structured auditory input may be "
+              "able to lower autonomic arousal and damp that loop, postponing "
+              "the point at which accumulation forces a choice between comfort "
+              "and consciousness.")
 r.bold = True
 r.font.size = Pt(11)
 Pp("Two claims are separable here and should be judged separately. The first is "
-   "that an arousal\u2013pain loop contributes materially to dose escalation in "
-   "the last days. The second is that the auditory channel is a usable point of "
-   "entry to it. The first could be true and the second false.", indent=True)
+   "that an arousal\u2013distress loop contributes materially to dose escalation "
+   "in the last days. The second is that the auditory channel is a usable point "
+   "of entry to it. The first could be true and the second false. The chain "
+   "that links them has four levels of evidence, and neuroanatomical "
+   "connectivity at the first level is not evidence of a therapeutic effect at "
+   "the fourth:", indent=True)
+BULLET("auditory information reaches brainstem structures without requiring "
+       "cortical processing %s." % C("koelsch2014"), bold_lead="Established: ")
+BULLET("autonomic regulation involves brainstem, limbic and cortical structures "
+       "%s." % C("benarroch1993", "thayer2009"), bold_lead="Established: ")
+BULLET("structured auditory stimulation in actively dying patients can exploit "
+       "residual auditory processing to alter autonomic state.",
+       bold_lead="Hypothesis: ")
+BULLET("whether this produces a clinically meaningful change in opioid "
+       "escalation.", bold_lead="Untested: ")
+Pp("Neither claim implies that analgesia should be withheld, reduced or delayed. "
+   "Throughout, the opioid is titrated to comfort exactly as it would otherwise "
+   "be; any change in requirement is an outcome to be observed, never a target "
+   "to be pursued (Section 8).", indent=True)
 
 # ================================================================= SECTION 3
 H("3. Why the auditory channel, and what has actually been shown")
 Pp("Acoustic signals reach the brainstem through the cochlear nuclei, superior "
-   "olivary complex and inferior colliculus before any thalamocortical routing "
-   "%s. These are among the most metabolically economical and phylogenetically "
-   "conserved structures in the central nervous system, and processing along "
-   "this path does not require cortical participation." % C("kraus2010"))
+   "olivary complex and inferior colliculus before thalamocortical routing, and "
+   "some acoustic features elicit brainstem-level reflexive and autonomic "
+   "responses without requiring cortical processing %s. In animal studies, a "
+   "direct projection from the auditory thalamus to the amygdala supports "
+   "conditioned autonomic responses to sound without passing through auditory "
+   "cortex %s. Whether any such route remains functional, or usable, in "
+   "actively dying patients is not known." % (C("koelsch2014"), C("ledoux2000")))
 Pp("The evidentiary position must be stated precisely, because the source "
    "literature is often summarised more strongly than it supports. Two distinct "
    "findings are relevant and they are not the same finding.", indent=True)
@@ -279,30 +312,39 @@ Pp("No published study has demonstrated semantic processing in actively dying "
 # ================================================================= SECTION 4
 H("4. From acoustic input to autonomic state")
 Pp("The route from processed sound to cardiac output runs through the central "
-   "autonomic network. Under the neurovisceral integration account, prefrontal "
-   "and limbic structures exert inhibitory control over sympathoexcitatory "
-   "circuits, with vagally mediated heart rate variability as the accessible "
-   "index of that control %s. Afferent traffic from baroreceptors returns "
-   "through the nucleus tractus solitarius to the insular cortex, which "
-   "supports interoceptive representation of bodily state %s. The loop is "
-   "bidirectional: a steady cardiac rhythm is not merely an output of calm but "
-   "an input to it." % (C("thayer2009"), C("critchley2004")))
-Pp("Where this becomes relevant to analgesia is the separability of pain's "
-   "sensory and affective dimensions. Hypnotic suggestion directed at "
-   "unpleasantness rather than intensity alters activity in the anterior "
-   "cingulate cortex without corresponding change in primary somatosensory "
-   "cortex %s \u2014 the affective component can be moved while the sensory "
-   "component is left intact. Meta-analysis supports a moderate to large "
-   "analgesic effect of hypnotic procedures %s, and the clinical literature on "
-   "hypnotic approaches to chronic pain is consistent with a mechanism acting "
-   "on pain-related distress rather than on transduction %s."
-   % (C("rainville1997"), C("montgomery2000"), C("jensen2014")), indent=True)
+   "autonomic network, a set of brainstem, hypothalamic, limbic and cortical "
+   "structures that regulate autonomic outflow %s. Under the neurovisceral "
+   "integration account, prefrontal and limbic structures exert inhibitory "
+   "control over sympathoexcitatory circuits, with vagally mediated heart rate "
+   "variability as the accessible index of that control %s. Afferent traffic "
+   "from baroreceptors returns through the nucleus tractus solitarius to the "
+   "insular cortex, which supports interoceptive representation of bodily "
+   "state %s. In healthy people the loop is bidirectional: cardiac state is an "
+   "input to affective state as well as an output of it. None of these links "
+   "has been examined in actively dying patients."
+   % (C("benarroch1993"), C("thayer2009"), C("critchley2004")))
+Pp("Hypnosis offers a supporting analogy rather than direct evidence. In "
+   "healthy volunteers, suggestion directed at unpleasantness rather than "
+   "intensity altered anterior cingulate activity without corresponding change "
+   "in primary somatosensory cortex %s, showing that the affective component "
+   "of pain can be moved while the sensory component is left intact, and "
+   "meta-analysis supports an analgesic effect of hypnotic procedures %s. These "
+   "findings come from conscious, responsive people and are not evidence that "
+   "the same effect occurs in dying patients. The argument does not depend on "
+   "them; the chain it does depend on is auditory processing \u2192 autonomic "
+   "state \u2192 distress \u2192 opioid titration \u2192 metabolite accumulation."
+   % (C("rainville1997"), C("montgomery2000")), indent=True)
 FIG("figure1_pathway.png")
 CAP("Figure 1. The proposed auditory\u2013cardiac pathway. Grey boxes are "
-    "established anatomy; green marks the two steps for which there is direct "
-    "evidence in unresponsive or dying patients; blue marks the proposed points "
-    "of intervention and measurement. The red limb closes the loop: the "
-    "interoceptive reading of cardiac state feeds back into threat appraisal.")
+    "established anatomy. Green marks the only step measured in dying patients: "
+    "tone-evoked auditory event-related potentials %s; semantic processing has "
+    "not been measured in this population. Orange dashed boxes and arrows are "
+    "proposed links that are untested in dying patients; the subcortical route "
+    "to the amygdala is described in animal studies %s. Blue marks the proposed "
+    "intervention and the proposed readout. The red dashed limb is the proposed "
+    "feedback from interoceptive state to threat appraisal. Anatomical "
+    "connection is not evidence of a therapeutic effect."
+    % (C("blundon2020"), C("ledoux2000")))
 
 # ================================================================= SECTION 5
 H("5. A minimal model of the escalation loop")
@@ -310,18 +352,49 @@ Pp("To ask whether the proposed loop can produce the clinical pattern, and what 
    "damping it would be worth, we analyse a deliberately minimal system. "
    "Perceived pain P is nociceptive drive N amplified by autonomic arousal A "
    "with gain g; arousal is driven by perceived pain and damped by a term V "
-   "standing for the intervention; dose follows perceived pain; metabolite M "
-   "accumulates as clearance declines exponentially; and once M crosses a "
-   "threshold an agitation term is added to N, which is what closes the loop.")
-Pp("P = N(1 + gA);  dA/dt = (a\u2080 + k_P P \u2212 V \u2212 A)/\u03c4_A;  "
-   "dM/dt = k_M D \u2212 CL(t)M;  CL(t) = CL\u2080 exp(\u2212t/\u03c4_CL)",
-   italic=True, spacing=1.5)
+   "standing for the intervention; dose D is titrated toward perceived pain up "
+   "to a ceiling; metabolite M accumulates as clearance declines "
+   "exponentially; and once M first exceeds an illustrative model threshold M* "
+   "an agitation term k_agit is added to N, which is what closes the loop. M* "
+   "is a model construct, not an estimate of any neurotoxic concentration.")
+for eq in ["P = N(1 + gA),   N = N\u2080 + k_agit\u00b7H(M \u2212 M*)",
+           "dA/dt = (a\u2080 + k_P\u00b7P \u2212 V \u2212 A)/\u03c4_A,   A \u2265 0",
+           "dD/dt = (min(P, D_max) \u2212 D)/\u03c4_D",
+           "dM/dt = k_M\u00b7D \u2212 CL(t)\u00b7M,   CL(t) = CL\u2080\u00b7exp(\u2212t/\u03c4_CL)"]:
+    Pp(eq, italic=True, spacing=1.2)
+Pp("H is the unit step function. Initial conditions are A(0) = a\u2080, D(0) = 0 "
+   "and M(0) = 0. The system is integrated by forward Euler with a step of %.3f "
+   "day over %.0f days, and the crossing time is the first time at which M "
+   "exceeds M*. Parameter values and units are listed in Table 1; with them, "
+   "the equations above reproduce every number reported in this section."
+   % (R["dt"], R["t_end"]), indent=True)
 Pp("Every parameter is illustrative. None is fitted to patient data, this is not "
    "a pharmacokinetic simulation of morphine, and no quantity below should be "
    "read as a predicted dose or survival time. The model is used only to ask "
    "what class of behaviour the loop can produce and what would have to be "
    "measured to refute it. Results are therefore reported as relative timings.",
    indent=True)
+PARAM_ROWS = [
+    ("N\u2080", "N0", "baseline nociceptive drive", "a.u."),
+    ("g", "g", "affective gain: amplification of perceived pain by arousal", "per unit arousal"),
+    ("a\u2080", "a0", "baseline autonomic arousal", "a.u."),
+    ("k_P", "kP", "drive of arousal by perceived pain", "arousal per unit pain"),
+    ("\u03c4_A", "tau_A", "arousal time constant", "day"),
+    ("\u03c4_D", "tau_D", "dose-adjustment time constant", "day"),
+    ("k_M", "kM", "metabolite formation per unit dose", "M units per dose unit"),
+    ("CL\u2080", "CL0", "initial metabolite clearance", "per day"),
+    ("\u03c4_CL", "tau_CL", "clearance decay time constant", "day"),
+    ("M*", "Mstar", "illustrative model threshold", "M units"),
+    ("k_agit", "kAgit", "agitation added to N after M first exceeds M*", "a.u."),
+    ("D_max", "Dmax", "dose ceiling", "dose units"),
+]
+TBL(["Symbol", "Value", "Meaning", "Units"],
+    [[s, "%g" % P[k], m, u] for s, k, m, u in PARAM_ROWS]
+    + [["V", "0; 0.35; 1.5; swept 0\u20133", "vagal damping (no intervention; "
+        "modest; maximal in Fig. 2; sweep in Fig. 2B)", "arousal units"]])
+CAP("Table 1. Model parameters, all illustrative and none fitted to patient data. "
+    "a.u., arbitrary units. Integration: forward Euler, step %.3f day, %.0f days."
+    % (R["dt"], R["t_end"]))
 Pp("Three results follow. First, the loop is capable of producing the clinical "
    "pattern: with the assumed parameters the threshold is crossed on day "
    "%.2f, after which dose saturates. Second, damping arousal postpones that "
@@ -334,14 +407,48 @@ Pp("Three results follow. First, the loop is capable of producing the clinical "
    "a little over a day."
    % (BASE["cross_day"], INT["delay_hours"], -100 * INT["mean_dose_change"],
       R["max_delay_hours"], R["no_affective_loop"]["cross_day"]), indent=True)
+SENS = R["sensitivity"]
+_ok = [s for s in SENS if s["baseline_cross_day"] is not None]
+_pre = [s for s in SENS if s["param"] not in ("kAgit", "Dmax")]
+Pp("These results are conditional on the assumed parameters, so each of the "
+   "%d parameters in Table 1 was scaled in turn by 0.75 and 1.25 (Table 2). "
+   "Across the %d runs the baseline crossing moved between day %.2f and day "
+   "%.2f, the delay from modest damping between %.1f and %.1f hours, and the "
+   "ceiling between %.1f and %.1f hours. In %s did any damping strength prevent "
+   "the crossing. The agitation term and the dose ceiling act only after the "
+   "crossing and leave all three quantities unchanged. The qualitative result "
+   "— a delay that is real, bounded at hours to about two days, and never "
+   "a prevention — is therefore not an artefact of one parameter choice, "
+   "though its size is."
+   % (len(set(s["param"] for s in SENS)), len(SENS),
+      min(s["baseline_cross_day"] for s in _ok), max(s["baseline_cross_day"] for s in _ok),
+      min(s["delay_hours"] for s in _ok), max(s["delay_hours"] for s in _ok),
+      min(s["ceiling_hours"] for s in _ok), max(s["ceiling_hours"] for s in _ok),
+      "no run" if not any(s["prevented"] for s in SENS) else "some runs"), indent=True)
+_by = {}
+for s in SENS:
+    _by.setdefault(s["param"], {})[s["factor"]] = s
+_sym = {k: sym for sym, k, _, _ in PARAM_ROWS}
+TBL(["Parameter", "×0.75: crossing (day)", "delay (h)", "ceiling (h)",
+     "×1.25: crossing (day)", "delay (h)", "ceiling (h)"],
+    [[_sym[k]] + ["%.2f" % _by[k][f]["baseline_cross_day"] if j == 0 else
+                  "%.1f" % _by[k][f][("delay_hours", "ceiling_hours")[j - 1]]
+                  for f in (0.75, 1.25) for j in range(3)]
+     for k in _by], fs=8.5)
+CAP("Table 2. One-at-a-time sensitivity. Each parameter is scaled by 0.75 or 1.25 "
+    "with all others at the Table 1 values; the baseline case is crossing day "
+    "%.2f, delay %.1f h at V = 0.35, ceiling %.1f h. No perturbation allows any "
+    "damping strength (V swept 0–3) to prevent the crossing."
+    % (BASE["cross_day"], INT["delay_hours"], R["max_delay_hours"]))
 FIG("figure2_model.png")
 CAP("Figure 2. Behaviour of the minimal loop model. (A) Accumulated metabolite "
-    "against time for no intervention, modest damping and maximal damping; "
-    "circles mark the threshold crossing. (B) Delay in reaching the threshold as "
-    "a function of damping strength. The delay saturates at %.1f hours and no "
-    "damping strength prevents the crossing. Parameters are illustrative "
-    "throughout; the figure shows the shape of the result, not a prediction for "
-    "any patient." % R["max_delay_hours"])
+    "against time for no intervention, modest damping and maximal damping; the "
+    "dotted line is the illustrative model threshold M*, not a neurotoxic "
+    "concentration, and circles mark its crossing. (B) Delay in reaching the "
+    "threshold as a function of damping strength. The delay saturates at %.1f "
+    "hours and no damping strength prevents the crossing. Parameters are "
+    "illustrative throughout (Table 1); the figure shows the shape of the "
+    "result, not a prediction for any patient." % R["max_delay_hours"])
 Pp("That the modelled benefit is bounded is not a weakness of the proposal but "
    "the most useful thing the model says. An intervention that postpones the "
    "neurotoxic threshold by hours is worth having if those hours are lucid and "
@@ -351,39 +458,47 @@ Pp("That the modelled benefit is bounded is not a weakness of the proposal but "
 # ================================================================= SECTION 6
 H("6. Evidence status of each link")
 Pp("The argument above chains together claims of very different evidentiary "
-   "standing. Table 1 assigns each a status rather than folding them into a "
+   "standing. Table 3 assigns each a status rather than folding them into a "
    "single judgement about the hypothesis, so that a reader can locate the weak "
    "links directly.")
 TBL(["Link", "Status", "Basis"],
-    [["Subcortical auditory pathway reaches limbic and autonomic structures "
-      "without cortical routing", "Demonstrated", "Established neuroanatomy " + C("kraus2010")],
-     ["Auditory ERPs to structured sound persist in actively dying patients",
+    [["Auditory information reaches brainstem structures and can evoke "
+      "autonomic responses without requiring cortical processing",
+      "Demonstrated (healthy humans)", "Review of brainstem and limbic responses to sound "
+      + C("koelsch2014")],
+     ["A direct auditory thalamus → amygdala route supports autonomic "
+      "responses to sound", "Demonstrated (animals)", "Fear-conditioning circuitry "
+      + C("ledoux2000")],
+     ["Auditory ERPs to structured tone sequences persist in actively dying patients",
       "Demonstrated", "Direct measurement in hospice patients " + C("blundon2020")],
      ["Automatic semantic processing can survive profound unresponsiveness",
       "Demonstrated", "N400 in disorders of consciousness " + C("steppacher2013")],
      ["Semantic processing persists in actively dying patients",
       "Untested", "Not measured in this population; prediction P1"],
      ["Vagally mediated HRV indexes central autonomic control",
-      "Demonstrated", "Neurovisceral integration " + C("thayer2009")],
+      "Demonstrated (healthy humans)", "Neurovisceral integration " + C("thayer2009")],
      ["Hypnotic suggestion separates pain affect from pain sensation",
-      "Demonstrated", "ACC dissociation in healthy volunteers " + C("rainville1997")],
+      "Analogy only", "ACC dissociation in healthy volunteers " + C("rainville1997")],
      ["Hypnotic procedures reduce analgesic requirement",
-      "Supported", "Randomised evidence in conscious sedation " + C("faymonville1997")
+      "Analogy only", "Randomised evidence in conscious sedation " + C("faymonville1997")
       + "; meta-analysis " + C("montgomery2000")],
      ["Arousal amplifies perceived pain via central sensitisation",
       "Supported", "Mechanistic review " + C("woolf2011")],
-     ["An arousal-pain loop drives a material share of terminal escalation",
+     ["An arousal–distress loop drives a material share of terminal escalation",
       "Proposed", "This paper; prediction P2"],
-     ["Auditory input can damp that loop in dying patients",
-      "Proposed", "This paper; prediction P3"],
+     ["Structured auditory input alters autonomic state in dying patients",
+      "Untested", "This paper; prediction P3"],
+     ["That change alters opioid escalation",
+      "Untested", "This paper; prediction P4"],
      ["Damping postpones rather than prevents metabolite accumulation",
-      "Model result", "Section 5; conditional on assumed parameters"],
+      "Model result", "Section 5; conditional on illustrative parameters (Tables 1–2)"],
      ["A specific metabolite mediates opioid-induced neurotoxicity",
       "Contested", "Proposed " + C("smith2000") + ", refuted by the same group "
       + C("m3g_refute")]])
-CAP("Table 1. Status of each link in the chain. Rows 4, 9 and 10 are the load "
-    "bearing untested claims and are the targets of the experimental programme "
-    "in Section 7.")
+CAP("Table 3. Status of each link in the chain. Rows 5, 10, 11 and 12 are the "
+    "load-bearing untested claims and are the targets of the experimental "
+    "programme in Section 7. 'Analogy only' marks evidence from conscious people "
+    "that the argument does not depend on.")
 
 # ================================================================= SECTION 7
 H("7. Predictions and falsification")
@@ -428,6 +543,38 @@ for tag, body in [
     r.font.size = Pt(11)
 Pp("P3 is the decisive early test. It is non-invasive, requires no protocol "
    "deviation, and would be informative whichever way it resolved.", indent=True)
+p = doc.add_paragraph()
+p.paragraph_format.line_spacing = 1.5
+p.paragraph_format.space_before = Pt(5)
+r = p.add_run("Feasibility of P3. ")
+r.bold = True
+r.font.size = Pt(11)
+r = p.add_run(
+    "High-frequency heart rate variability is hard to measure in actively dying "
+    "patients, and a protocol has to plan for that rather than discover it. "
+    "Atrial fibrillation and frequent ectopy make short-term HRV uninterpretable, "
+    "so patients in atrial fibrillation are excluded and ectopic beats are "
+    "corrected or excluded by rules fixed in advance %s. High-frequency power "
+    "tracks respiratory sinus arrhythmia, so changes in breathing rate or pattern "
+    "— including periodic and terminal breathing — move it independently "
+    "of vagal tone; respiration must be recorded alongside the ECG and "
+    "high-frequency indices interpreted only when breathing lies within the "
+    "0.15–0.40 Hz band %s. Anticholinergics given for respiratory "
+    "secretions, and opioids and sedatives themselves, alter cardiac vagal "
+    "activity, so every dose is time-stamped and blocks adjacent to a bolus are "
+    "excluded. Signal quality should come from ECG rather than "
+    "photoplethysmography, at a sampling rate of at least 250 Hz %s, with the "
+    "proportion of edited beats reported per segment and segments above a "
+    "preset threshold discarded. Because the autonomic state of a dying patient "
+    "drifts over hours, the comparison should be within patient: alternating "
+    "short blocks of structured verbal input and a matched acoustic control, "
+    "with the change in log high-frequency power or RMSSD as the outcome. The "
+    "first study should report feasibility itself — the fraction of eligible "
+    "patients and of recorded blocks that yield analysable data — because if "
+    "that fraction is small, P3 cannot be tested in this population by this "
+    "method."
+    % (C("taskforce1996"), C("laborde2017"), C("taskforce1996")))
+r.font.size = Pt(11)
 
 # ================================================================= SECTION 8
 H("8. How this proposal could cause harm")
@@ -505,30 +652,56 @@ Pp("Data availability. The model implementation, parameter set and figure "
    "Running escalation_model.py followed by make_figures.py reproduces every "
    "number and figure. This manuscript is deposited at "
    "https://doi.org/10.5281/zenodo.22860432. Both are concept DOIs and resolve "
-   "to the current version. No patient data were generated or analysed."
+   "to the current version. The equations, initial conditions and parameter "
+   "values needed to reproduce the model without the code are given in Section 5 "
+   "and Tables 1–2. No patient data were generated or analysed."
    % ("https://github.com/sandlerleon/auditory-cardiac-model", "10.5281/zenodo.22860430"))
-Pp("Use of generative artificial intelligence. During the preparation of this "
-   "work the author used Claude (Anthropic) to assist with literature synthesis, "
-   "model implementation and drafting. The author reviewed and edited all "
-   "content, verified every cited reference against Crossref, and takes full "
-   "responsibility for the publication. No generative AI tool is listed as an "
-   "author and none was used to produce or alter data.")
+
+H("Declaration of generative AI and AI-assisted technologies in the manuscript "
+  "preparation process", size=11)
+Pp("During the preparation of this work the author used Claude (Anthropic) in "
+   "order to assist with literature synthesis, implementation of the "
+   "illustrative model, and drafting and editing of the text. After using this "
+   "tool, the author reviewed and edited the content as needed, verified every "
+   "cited reference against its source, and takes full responsibility for the "
+   "content of the published article. No generative AI tool is listed as an "
+   "author, and none was used to produce or alter data.")
 
 # ================================================================ REFERENCES
 H("References")
+
+
+def _end(s):
+    """Terminate with a full stop unless the text already ends in punctuation."""
+    return s if s[-1] in ".?!" else s + "."
+
+
+ARTICLE_NO = {"blundon2020": "10336"}              # Crossref article-number
+
+
+def fmt_ref(v, tag=None):
+    au = _end(", ".join(v["authors"][:6]) + (", et al." if len(v["authors"]) > 6 else ""))
+    ti = _end(v["title"])
+    if v.get("url") and not v.get("doi"):          # guideline without a DOI
+        return "%s %s %s; %d. %s" % (au, ti, v["journal"], v["year"], v["url"])
+    if v.get("cochrane"):                          # Cochrane: year;(issue):article number
+        loc = ";" + v["cochrane"]
+    elif v.get("volume"):
+        pg = v.get("page") or ARTICLE_NO.get(tag)
+        loc = ";" + v["volume"] + ((":%s" % pg) if pg else "")
+    else:                                          # online ahead of print
+        loc = ". Published online; article %s" % v["page"] if v.get("page") else ""
+    return "%s %s %s %d%s. https://doi.org/%s" % (au, ti, v["journal"], v["year"], loc,
+                                                  v["doi"])
+
+
 for i, tag in enumerate(ORDER, 1):
-    v = REFS[tag]
-    au = ", ".join(v["authors"][:6]) + (", et al." if len(v["authors"]) > 6 else "")
-    vol = (" %s" % v["volume"]) if v.get("volume") else ""
-    pg = (":%s" % v["page"]) if v.get("page") else ""
     p = doc.add_paragraph()
     p.paragraph_format.line_spacing = 1.5
     p.paragraph_format.space_after = Pt(3)
     p.paragraph_format.left_indent = Inches(0.35)
     p.paragraph_format.first_line_indent = Inches(-0.35)
-    r = p.add_run("[%d] %s. %s. %s %d;%s%s. https://doi.org/%s"
-                  % (i, au, v["title"], v["journal"], v["year"], vol.strip(), pg,
-                     v["doi"]))
+    r = p.add_run("[%d] %s" % (i, fmt_ref(REFS[tag], tag)))
     r.font.size = Pt(9.5)
 
 if not os.path.isdir(OUT):

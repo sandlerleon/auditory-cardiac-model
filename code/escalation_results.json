@@ -676,5 +676,200 @@
    "mean_dose_change": -0.1139
   }
  },
- "delay_positive_for_all_gains": true
+ "delay_positive_for_all_gains": true,
+ "sensitivity": [
+  {
+   "param": "g",
+   "factor": 0.75,
+   "baseline_cross_day": 1.258,
+   "delay_hours": 7.0,
+   "ceiling_hours": 29.7,
+   "prevented": false
+  },
+  {
+   "param": "g",
+   "factor": 1.25,
+   "baseline_cross_day": 0.894,
+   "delay_hours": 5.1,
+   "ceiling_hours": 38.4,
+   "prevented": false
+  },
+  {
+   "param": "a0",
+   "factor": 0.75,
+   "baseline_cross_day": 1.098,
+   "delay_hours": 7.3,
+   "ceiling_hours": 33.5,
+   "prevented": false
+  },
+  {
+   "param": "a0",
+   "factor": 1.25,
+   "baseline_cross_day": 0.996,
+   "delay_hours": 5.3,
+   "ceiling_hours": 36.0,
+   "prevented": false
+  },
+  {
+   "param": "kP",
+   "factor": 0.75,
+   "baseline_cross_day": 1.188,
+   "delay_hours": 8.8,
+   "ceiling_hours": 31.4,
+   "prevented": false
+  },
+  {
+   "param": "kP",
+   "factor": 1.25,
+   "baseline_cross_day": 0.932,
+   "delay_hours": 4.4,
+   "ceiling_hours": 37.5,
+   "prevented": false
+  },
+  {
+   "param": "tau_A",
+   "factor": 0.75,
+   "baseline_cross_day": 1.0,
+   "delay_hours": 6.4,
+   "ceiling_hours": 35.9,
+   "prevented": false
+  },
+  {
+   "param": "tau_A",
+   "factor": 1.25,
+   "baseline_cross_day": 1.084,
+   "delay_hours": 6.0,
+   "ceiling_hours": 33.8,
+   "prevented": false
+  },
+  {
+   "param": "tau_D",
+   "factor": 0.75,
+   "baseline_cross_day": 1.008,
+   "delay_hours": 6.2,
+   "ceiling_hours": 35.4,
+   "prevented": false
+  },
+  {
+   "param": "tau_D",
+   "factor": 1.25,
+   "baseline_cross_day": 1.08,
+   "delay_hours": 6.1,
+   "ceiling_hours": 34.3,
+   "prevented": false
+  },
+  {
+   "param": "kM",
+   "factor": 0.75,
+   "baseline_cross_day": 1.422,
+   "delay_hours": 10.7,
+   "ceiling_hours": 50.7,
+   "prevented": false
+  },
+  {
+   "param": "kM",
+   "factor": 1.25,
+   "baseline_cross_day": 0.84,
+   "delay_hours": 4.0,
+   "ceiling_hours": 23.8,
+   "prevented": false
+  },
+  {
+   "param": "CL0",
+   "factor": 0.75,
+   "baseline_cross_day": 0.944,
+   "delay_hours": 4.5,
+   "ceiling_hours": 25.2,
+   "prevented": false
+  },
+  {
+   "param": "CL0",
+   "factor": 1.25,
+   "baseline_cross_day": 1.17,
+   "delay_hours": 8.5,
+   "ceiling_hours": 44.8,
+   "prevented": false
+  },
+  {
+   "param": "tau_CL",
+   "factor": 0.75,
+   "baseline_cross_day": 1.01,
+   "delay_hours": 5.3,
+   "ceiling_hours": 27.8,
+   "prevented": false
+  },
+  {
+   "param": "tau_CL",
+   "factor": 1.25,
+   "baseline_cross_day": 1.07,
+   "delay_hours": 6.9,
+   "ceiling_hours": 42.0,
+   "prevented": false
+  },
+  {
+   "param": "Mstar",
+   "factor": 0.75,
+   "baseline_cross_day": 0.792,
+   "delay_hours": 3.5,
+   "ceiling_hours": 21.0,
+   "prevented": false
+  },
+  {
+   "param": "Mstar",
+   "factor": 1.25,
+   "baseline_cross_day": 1.324,
+   "delay_hours": 9.5,
+   "ceiling_hours": 47.1,
+   "prevented": false
+  },
+  {
+   "param": "kAgit",
+   "factor": 0.75,
+   "baseline_cross_day": 1.044,
+   "delay_hours": 6.2,
+   "ceiling_hours": 34.8,
+   "prevented": false
+  },
+  {
+   "param": "kAgit",
+   "factor": 1.25,
+   "baseline_cross_day": 1.044,
+   "delay_hours": 6.2,
+   "ceiling_hours": 34.8,
+   "prevented": false
+  },
+  {
+   "param": "Dmax",
+   "factor": 0.75,
+   "baseline_cross_day": 1.044,
+   "delay_hours": 6.2,
+   "ceiling_hours": 34.8,
+   "prevented": false
+  },
+  {
+   "param": "Dmax",
+   "factor": 1.25,
+   "baseline_cross_day": 1.044,
+   "delay_hours": 6.2,
+   "ceiling_hours": 34.8,
+   "prevented": false
+  }
+ ],
+ "reproduction": {
+  "integration": "forward Euler, dt = 0.002 day, t = 0 to 10 days",
+  "initial_conditions": {
+   "A": "a0",
+   "D": 0.0,
+   "M": 0.0
+  },
+  "threshold": "first time M exceeds Mstar; after that N = N0 + kAgit",
+  "dose_rule": "dD/dt = (min(P, Dmax) - D)/tau_D",
+  "modest_damping_V": 0.35,
+  "maximal_damping_V_in_figure": 1.5,
+  "sweep_V": [
+   0.0,
+   3.0,
+   301
+  ]
+ }
 }
