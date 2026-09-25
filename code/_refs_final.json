@@ -148,7 +148,7 @@
   "volume": "27",
   "page": "524-528",
   "authors": [
-   "Smith M"
+   "Smith MT"
   ]
  },
  "m3g_refute": {
@@ -300,5 +300,32 @@
   "page": null,
   "doi": null,
   "url": "https://www.nice.org.uk/guidance/ng31"
+ },
+ "koch1999": {
+  "authors": [
+   "Koch M"
+  ],
+  "title": "The neurobiology of startle",
+  "journal": "Progress in Neurobiology",
+  "year": 1999,
+  "volume": "59",
+  "page": "107-128",
+  "doi": "10.1016/s0301-0082(98)00098-7"
+ },
+ "bissonnette2024": {
+  "authors": [
+   "Bissonnette J",
+   "Dumont E",
+   "Pinard AM",
+   "Landry M",
+   "Rainville P",
+   "Ogez D"
+  ],
+  "title": "Hypnosis and music interventions for anxiety, pain, sleep and well-being in palliative care: systematic review and meta-analysis",
+  "journal": "BMJ Supportive & Palliative Care",
+  "year": 2024,
+  "volume": "13",
+  "page": "e503-e514",
+  "doi": "10.1136/bmjspcare-2022-003551"
  }
 }

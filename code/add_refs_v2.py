@@ -27,6 +27,12 @@ NEW = {
     "benarroch1993": "10.1016/S0025-6196(12)62272-1",
     "taskforce1996": "10.1161/01.CIR.93.5.1043",
     "laborde2017": "10.3389/fpsyg.2017.00213",
+    # brainstem auditory processing without cortex: the acoustic startle circuit.
+    # Koelsch 2014 supports limbic modulation by music, not this claim.
+    "koch1999": "10.1016/S0301-0082(98)00098-7",
+    # replaces Bradt & Dileo 2014 (CD007169.pub3), which is a WITHDRAWN notice;
+    # the 2025 Cochrane record CD016311 is only a protocol
+    "bissonnette2024": "10.1136/bmjspcare-2022-003551",
 }
 
 
@@ -40,7 +46,8 @@ for tag, doi in NEW.items():
     au = ["%s %s" % (a["family"].title() if a["family"].isupper() else a["family"],
                      initials(a.get("given", ""))) for a in m.get("author", []) if "family" in a]
     REFS[tag] = {"authors": au, "title": m["title"][0],
-                 "journal": m["container-title"][0], "year": m["issued"]["date-parts"][0][0],
+                 "journal": m["container-title"][0].replace("&amp;", "&"),
+                 "year": m["issued"]["date-parts"][0][0],
                  "volume": m.get("volume"), "page": m.get("page"), "doi": doi.lower()}
 
 REFS["taskforce1996"]["authors"] = [
@@ -48,6 +55,8 @@ REFS["taskforce1996"]["authors"] = [
     "of Pacing and Electrophysiology"]
 REFS["taskforce1996"]["title"] = ("Heart rate variability: standards of measurement, "
                                   "physiological interpretation and clinical use")
+REFS["bissonnette2024"].update({"year": 2024, "volume": "13", "page": "e503-e514"})  # PubMed issue date
+REFS["smith2000"]["authors"] = ["Smith MT"]      # PubMed; Crossref drops the middle initial
 REFS["laborde2017"]["volume"] = "8"
 REFS["laborde2017"]["page"] = "213"
 

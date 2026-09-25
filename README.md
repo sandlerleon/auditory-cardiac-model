@@ -107,7 +107,7 @@ every citation listed, and scans for language that would overclaim — text
 suggesting the intervention replaces opioid, eliminates the need for it, or
 prevents the neurotoxic threshold.
 
-All 21 references were verified against their sources (20 against Crossref; the
+All 22 references were verified against their sources (21 against Crossref and PubMed; the
 NICE NG31 guideline has no DOI and is cited by its URL).
 
 ## Citation

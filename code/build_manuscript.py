@@ -175,8 +175,8 @@ ABSTRACT = (
     "part of this escalation is driven not by nociception but by a "
     "self-reinforcing loop between autonomic arousal and perceived distress, "
     "and that the loop may be accessible through hearing. We separate what is "
-    "established (auditory information reaches brainstem structures without "
-    "requiring cortical processing; autonomic regulation involves brainstem, "
+    "established (auditory information is processed in brainstem circuits "
+    "before it reaches cortex; autonomic regulation involves brainstem, "
     "limbic and cortical structures; tone-evoked auditory potentials persist "
     "in actively dying patients) from what is hypothesised (that residual "
     "auditory processing can be used to lower autonomic arousal in dying "
@@ -261,8 +261,10 @@ Pp("Two claims are separable here and should be judged separately. The first is 
    "that links them has four levels of evidence, and neuroanatomical "
    "connectivity at the first level is not evidence of a therapeutic effect at "
    "the fourth:", indent=True)
-BULLET("auditory information reaches brainstem structures without requiring "
-       "cortical processing %s." % C("koelsch2014"), bold_lead="Established: ")
+BULLET("auditory information is processed in brainstem circuits before it "
+       "reaches cortex, and some of those circuits drive fast responses, such as "
+       "the acoustic startle, without cortical involvement %s." % C("koch1999"),
+       bold_lead="Established: ")
 BULLET("autonomic regulation involves brainstem, limbic and cortical structures "
        "%s." % C("benarroch1993", "thayer2009"), bold_lead="Established: ")
 BULLET("structured auditory stimulation in actively dying patients can exploit "
@@ -279,12 +281,17 @@ Pp("Neither claim implies that analgesia should be withheld, reduced or delayed.
 H("3. Why the auditory channel, and what has actually been shown")
 Pp("Acoustic signals reach the brainstem through the cochlear nuclei, superior "
    "olivary complex and inferior colliculus before thalamocortical routing, and "
-   "some acoustic features elicit brainstem-level reflexive and autonomic "
-   "responses without requiring cortical processing %s. In animal studies, a "
-   "direct projection from the auditory thalamus to the amygdala supports "
-   "conditioned autonomic responses to sound without passing through auditory "
-   "cortex %s. Whether any such route remains functional, or usable, in "
-   "actively dying patients is not known." % (C("koelsch2014"), C("ledoux2000")))
+   "some brainstem auditory circuits act without cortical involvement: the "
+   "acoustic startle response is mediated by a circuit in the lower brainstem "
+   "%s. In animal studies of fear conditioning, the amygdala receives auditory "
+   "input directly from the auditory thalamus as well as from auditory cortex, "
+   "and conditioned fear responses to simple tones can be acquired through the "
+   "thalamic route %s. In healthy people, functional neuroimaging shows that "
+   "music modulates activity in structures involved in autonomic regulation, "
+   "including the amygdala, hypothalamus, insula and cingulate cortex %s. "
+   "Whether any of these routes remains functional, or usable, in actively "
+   "dying patients is not known."
+   % (C("koch1999"), C("ledoux2000"), C("koelsch2014")))
 Pp("The evidentiary position must be stated precisely, because the source "
    "literature is often summarised more strongly than it supports. Two distinct "
    "findings are relevant and they are not the same finding.", indent=True)
@@ -450,9 +457,10 @@ CAP("Figure 2. Behaviour of the minimal loop model. (A) Accumulated metabolite "
     "illustrative throughout (Table 1); the figure shows the shape of the "
     "result, not a prediction for any patient." % R["max_delay_hours"])
 Pp("That the modelled benefit is bounded is not a weakness of the proposal but "
-   "the most useful thing the model says. An intervention that postpones the "
-   "point of accumulation-driven agitation by hours is worth having if those hours are lucid and "
-   "the patient's family is present. An intervention sold as a way to avoid "
+   "the most useful thing the model says. If an intervention were shown to "
+   "postpone accumulation-driven agitation without compromising comfort, the "
+   "resulting interval could be clinically meaningful, particularly if "
+   "responsiveness were preserved. An intervention sold as a way to avoid "
    "opioid escalation would be both wrong and dangerous.", indent=True)
 
 # ================================================================= SECTION 6
@@ -462,13 +470,15 @@ Pp("The argument above chains together claims of very different evidentiary "
    "single judgement about the hypothesis, so that a reader can locate the weak "
    "links directly.")
 TBL(["Link", "Status", "Basis"],
-    [["Auditory information reaches brainstem structures and can evoke "
-      "autonomic responses without requiring cortical processing",
-      "Demonstrated (healthy humans)", "Review of brainstem and limbic responses to sound "
-      + C("koelsch2014")],
-     ["A direct auditory thalamus → amygdala route supports autonomic "
-      "responses to sound", "Demonstrated (animals)", "Fear-conditioning circuitry "
+    [["Brainstem auditory circuits can drive responses without cortical "
+      "involvement", "Demonstrated", "Acoustic startle circuit in the lower "
+      "brainstem " + C("koch1999")],
+     ["A direct auditory thalamus → amygdala route supports conditioned fear "
+      "responses to tones", "Demonstrated (animals)", "Fear-conditioning circuitry "
       + C("ledoux2000")],
+     ["Sound modulates activity in limbic structures involved in autonomic "
+      "regulation", "Demonstrated (healthy humans)", "Functional neuroimaging of "
+      "music-evoked emotion " + C("koelsch2014")],
      ["Auditory ERPs to structured tone sequences persist in actively dying patients",
       "Demonstrated", "Direct measurement in hospice patients " + C("blundon2020")],
      ["Automatic semantic processing can survive profound unresponsiveness",
@@ -482,8 +492,10 @@ TBL(["Link", "Status", "Basis"],
      ["Hypnotic procedures reduce analgesic requirement",
       "Analogy only", "Randomised evidence in conscious sedation " + C("faymonville1997")
       + "; meta-analysis " + C("montgomery2000")],
-     ["Arousal amplifies perceived pain via central sensitisation",
-      "Supported", "Mechanistic review " + C("woolf2011")],
+     ["Central mechanisms can amplify pain beyond the peripheral input "
+      "(central sensitisation)", "Demonstrated (other populations)",
+      "Mechanistic review " + C("woolf2011") + "; a contribution from arousal is "
+      "part of this proposal, not of the review"],
      ["An arousal–distress loop drives a material share of terminal escalation",
       "Proposed", "This paper; prediction P2"],
      ["Structured auditory input alters autonomic state in dying patients",
@@ -495,7 +507,7 @@ TBL(["Link", "Status", "Basis"],
      ["A specific metabolite mediates opioid-induced neurotoxicity",
       "Contested", "Proposed " + C("smith2000") + ", refuted by the same group "
       + C("m3g_refute")]])
-CAP("Table 3. Status of each link in the chain. Rows 5, 10, 11 and 12 are the "
+CAP("Table 3. Status of each link in the chain. Rows 6, 11, 12 and 13 are the "
     "load-bearing untested claims and are the targets of the experimental "
     "programme in Section 7. 'Analogy only' marks evidence from conscious people "
     "that the argument does not depend on.")
@@ -541,8 +553,10 @@ for tag, body in [
     r.font.size = Pt(11)
     r = p.add_run(body)
     r.font.size = Pt(11)
-Pp("P3 is the decisive early test. It is non-invasive, requires no protocol "
-   "deviation, and would be informative whichever way it resolved.", indent=True)
+Pp("P3 is the most direct early test of the proposed auditory–autonomic "
+   "link. It does not test the rest of the chain to opioid escalation, which P2 "
+   "and P4 address, but it is non-invasive, requires no protocol deviation, and "
+   "would be informative whichever way it resolved.", indent=True)
 p = doc.add_paragraph()
 p.paragraph_format.line_spacing = 1.5
 p.paragraph_format.space_before = Pt(5)
@@ -605,9 +619,12 @@ for lead, body in [
   "adequate analgesia in hope of more time. The bounded benefit in Section 5 "
   "should be communicated as a bound, not as an expectation."),
  ("Displacement of established care. ",
-  "Music therapy at the end of life has been systematically reviewed, with "
-  "evidence judged insufficient for confident conclusions %s. A new adjunct "
-  "with weaker evidence should not compete for the same resources." % C("bradt2014")),
+  "Music and hypnosis interventions in palliative care have been "
+  "systematically reviewed: they appear feasible and acceptable, with a "
+  "moderate reduction in pain across a small number of randomised trials, but "
+  "the evidence is too limited to compare interventions or establish effects "
+  "on most other outcomes %s. A new adjunct with weaker evidence should not "
+  "compete for the same resources." % C("bissonnette2024")),
 ]:
     p = doc.add_paragraph()
     p.paragraph_format.line_spacing = 1.5
@@ -621,15 +638,17 @@ for lead, body in [
 # ================================================================= SECTION 9
 H("9. Relation to existing practice")
 Pp("Soothing speech, familiar voices and music are already part of good hospice "
-   "practice, and hypnotherapy has been delivered to palliative patients for "
-   "anxiety %s. The claim here is narrower than 'sound helps'. It is that a "
+   "practice, hypnotherapy has been delivered to palliative patients for "
+   "anxiety %s, and music and hypnosis interventions in palliative care have "
+   "been evaluated for pain, anxiety, sleep and well-being %s. The claim here "
+   "is narrower than 'sound helps'. It is that a "
    "specific, measurable autonomic pathway mediates the effect; that the "
    "relevant outcome is the trajectory of opioid requirement rather than a "
    "comfort score; and that the mechanism predicts a bounded, quantifiable "
    "benefit which can be tested and found absent. Existing practice is "
-   "compatible with the hypothesis but does not test it, because it has not "
-   "been paired with autonomic measurement or dose trajectory as endpoints."
-   % C("plaskota2012"))
+   "compatible with the hypothesis but does not test it: to our knowledge, it "
+   "has not been paired with autonomic measurement or opioid dose trajectory "
+   "as endpoints." % (C("plaskota2012"), C("bissonnette2024")))
 
 H("10. Ethical statement")
 Pp("This is a conceptual hypothesis paper. No patient was studied, no data were "
