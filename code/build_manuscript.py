@@ -25,6 +25,7 @@ dying patients.
 import io
 import json
 import os
+import sys
 
 from docx import Document
 from docx.enum.text import WD_ALIGN_PARAGRAPH
@@ -36,6 +37,11 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = r"C:\Users\Leon\Downloads\Medical Hypotheses"
 R = json.load(io.open(os.path.join(HERE, "escalation_results.json"), encoding="utf-8"))
 REFS = json.load(io.open(os.path.join(HERE, "_refs_final.json"), encoding="utf-8"))
+
+# --blind: the journal runs double-blind review, so the manuscript file must carry no
+# author name, affiliation, ORCID, e-mail, or links to the author's repository/deposits.
+# Those go on the separate title page (build_submission_items.py).
+BLIND = "--blind" in sys.argv
 
 BASE = R["baseline"]
 INT = R["intervention"]
@@ -159,10 +165,11 @@ r = p.add_run(TITLE)
 r.bold = True
 r.font.size = Pt(14)
 
-Pp("Leon Sandler", spacing=1.5)
-Pp("Independent Researcher, Northbrook, Illinois, United States", spacing=1.5, size=10.5)
-Pp("ORCID: 0009-0007-4584-808X \u00b7 Correspondence: sandler.leon@gmail.com",
-   spacing=1.5, size=10.5)
+if not BLIND:
+    Pp("Leon Sandler", spacing=1.5)
+    Pp("Independent Researcher, Northbrook, Illinois, United States", spacing=1.5, size=10.5)
+    Pp("ORCID: 0009-0007-4584-808X \u00b7 Correspondence: sandler.leon@gmail.com",
+       spacing=1.5, size=10.5)
 
 H("Abstract")
 ABSTRACT = (
@@ -666,15 +673,25 @@ Pp("This is a conceptual hypothesis paper. No patient was studied, no data were 
 H("Declarations")
 Pp("Funding. This work received no external funding.")
 Pp("Competing interests. The author declares no competing interests.")
-Pp("Data availability. The model implementation, parameter set and figure "
-   "generators are openly available at %s and archived at https://doi.org/%s. "
-   "Running escalation_model.py followed by make_figures.py reproduces every "
-   "number and figure. This manuscript is deposited at "
-   "https://doi.org/10.5281/zenodo.22860432. Both are concept DOIs and resolve "
-   "to the current version. The equations, initial conditions and parameter "
-   "values needed to reproduce the model without the code are given in Section 5 "
-   "and Tables 1–2. No patient data were generated or analysed."
-   % ("https://github.com/sandlerleon/auditory-cardiac-model", "10.5281/zenodo.22860430"))
+if BLIND:
+    Pp("Data availability. The model implementation, parameter set and figure "
+       "generators are openly available in a public repository with an archived, "
+       "versioned DOI; the links are withheld here for double-blind review and are "
+       "given on the title page. Running escalation_model.py followed by "
+       "make_figures.py reproduces every number and figure. The equations, initial "
+       "conditions and parameter values needed to reproduce the model without the "
+       "code are given in Section 5 and Tables 1–2. No patient data were "
+       "generated or analysed.")
+else:
+    Pp("Data availability. The model implementation, parameter set and figure "
+       "generators are openly available at %s and archived at https://doi.org/%s. "
+       "Running escalation_model.py followed by make_figures.py reproduces every "
+       "number and figure. This manuscript is deposited at "
+       "https://doi.org/10.5281/zenodo.22860432. Both are concept DOIs and resolve "
+       "to the current version. The equations, initial conditions and parameter "
+       "values needed to reproduce the model without the code are given in Section 5 "
+       "and Tables 1–2. No patient data were generated or analysed."
+       % ("https://github.com/sandlerleon/auditory-cardiac-model", "10.5281/zenodo.22860430"))
 
 H("Declaration of generative AI and AI-assisted technologies in the manuscript "
   "preparation process", size=11)
@@ -725,7 +742,13 @@ for i, tag in enumerate(ORDER, 1):
 
 if not os.path.isdir(OUT):
     os.makedirs(OUT)
-path = os.path.join(OUT, "Auditory_Cardiac_Channel_MedicalHypotheses.docx")
+cp = doc.core_properties
+cp.author = "" if BLIND else "Leon Sandler"
+cp.last_modified_by = "" if BLIND else "Leon Sandler"
+cp.title = TITLE
+cp.comments = ""
+path = os.path.join(OUT, "Auditory_Cardiac_Channel_MedicalHypotheses%s.docx"
+                    % ("_anonymized" if BLIND else ""))
 doc.save(path)
 
 words = sum(len(p.text.split()) for p in doc.paragraphs)
